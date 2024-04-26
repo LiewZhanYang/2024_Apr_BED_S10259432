@@ -16,7 +16,21 @@ app.get("/books", (req, res) => {
   res.json(books);
 });
 
+app.post("/books", (req, res) => {
+  const newBook = req.body;
+  newBook.id = books.length + 1;
+  books.push(newBook);
+  res.status(201).json(newBook);
+});
+
+
+
+
+
+
+
+
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
