@@ -23,9 +23,31 @@ app.post("/books", (req, res) => {
   res.status(201).json(newBook);
 });
 
+app.get("/books/:id", (req, res) => {
+  const bookId = parseInt(req.params.id);
+  const book = books.find((book) => book.id === bookId);
 
+  if (book) {
+    res.json(book);
+  } else {
+    res.status(404).send("Book not found");
+  }
+});
 
+app.put("/books/:id", (req, res) => {
+  const bookId = parseInt(req.params.id);
+  const updatedBook = req.body;
 
+  const bookIndex = books.findIndex((book) => book.Id == bookId);
+
+  if (bookIndex !== -1) {
+    updatedBook.id = bookId;
+    books[bookIndex] = updatedBook;
+    res.json(updatedBook);
+  } else {
+    res.status(404).send("Book not found");
+  }
+});
 
 
 
