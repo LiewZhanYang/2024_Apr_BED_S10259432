@@ -1,9 +1,14 @@
 const express = require("express");
-const sql = require("mssql"); // Assuming you've installed mssql
+const booksController = require("./controllers/booksController");
+const sql = require("mssql");
 const dbConfig = require("./dbConfig");
 
 const app = express();
 const port = process.env.PORT || 3000; // Use environment variable or default port
+
+// Routes for GET requests (replace with appropriate routes for update and delete later)
+app.get("/books", booksController.getAllBooks);
+app.get("/books/:id", booksController.getBookById);
 
 app.listen(port, async () => {
   try {
