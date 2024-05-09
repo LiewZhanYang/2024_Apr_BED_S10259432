@@ -3,6 +3,7 @@ const booksController = require("./controllers/booksController");
 const sql = require("mssql");
 const dbConfig = require("./dbConfig");
 const bodyParser = require("body-parser"); // Import body-parser
+const validateBook = require("./middlewares/validateBook");
 
 const app = express();
 const port = process.env.PORT || 3000; // Use environment variable or default port
